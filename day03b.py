@@ -17,9 +17,5 @@ for i in open("day03.txt", "r").readlines():
             else:
                 wire[(x,y)]=l
     mod=True
-print(cross)
-mid=9999999999
-for di in cross:
-    if di<mid:
-        mid=di
-print (mid)
+
+print(sorted(cross)[0])

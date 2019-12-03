@@ -15,12 +15,5 @@ for i in open("day03.txt", "r").readlines():
             else:
                 wire.add((x,y))
     mod=True
-print(cross)
-mid=9999999999
-micr=(0,0)
-for cr in cross:
-    di=abs(cr[0])+abs(cr[1])
-    if di<mid:
-        mid=di
-        micr=cr
-print (micr,mid)
+
+print(sorted([abs(i[0])+abs(i[1]) for i in cross])[0])
