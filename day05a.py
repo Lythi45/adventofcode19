@@ -1,7 +1,6 @@
 num=[int(i) for i in open("day05.txt", "r").read().split(',')]
 input=[1]
 po=0
-
 while(num[po]!=99):
     print(po,num[po:po+4])
     comm=num[po]%100
