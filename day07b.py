@@ -26,7 +26,6 @@ def genComp(num):
 program=[int(i) for i in open("day07.txt", "r").read().split(',')]
 thrusts=[]
 for p in itertools.permutations([5,6,7,8,9]):
-    first=True
     exit=False
     comps=[]
     input=[]
