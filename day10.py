@@ -3,13 +3,12 @@ import math
 def ggT(z,n):
     while n>0:
         n,z=z%n,n
-    return z
+    return abs(z)
 def short(dx,dy):
     t=ggT(dx,abs(dy))
-    return (dx/t,dy/t)
+    return (dx//t,dy//t)
 def angle(dx,dy):
     return -math.atan2(dx,dy)
-
 
 asters=[]
 for y,line in enumerate(open("day10.txt", "r").readlines()):
@@ -24,7 +23,7 @@ for aster in asters:
             dist_set.add(short(aster2[0]-aster[0],aster2[1]-aster[1]))
     dist_dict[aster]=len(dist_set)
 best_aster=sorted(dist_dict,key=lambda a:dist_dict[a])[-1]
-print(best_aster,dist_dict[best_aster]+1)#dont know why I have to add 1
+print(best_aster,dist_dict[best_aster])
 ang_dict={}
 for aster in asters:
     if aster!=best_aster:
@@ -41,5 +40,6 @@ sang=sorted(ang_dict2)
 #for i,ang in enumerate(sang):
 #    ast=ang_dict2[ang]
 #    print(i,ast[0]+best_aster[0],ast[1]+best_aster[1])
+print(len(ang_dict))
 aster200=ang_dict2[sang[199]]
 print((aster200[0]+best_aster[0])*100+(aster200[1]+best_aster[1]))
