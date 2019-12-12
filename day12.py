@@ -5,25 +5,24 @@ def ggT(z,n):
 def cmp(a,b):
     return (a > b) - (a < b)
 moons=[]
-states=[set(),set(),set()]
+vel=[[0,0,0],[0,0,0],[0,0,0],[0,0,0]]
+def state(d):
+    return [m[d] for m in moons]+[v[d] for v in vel]
 zm=[0,0,0]
 for moon in open("day12.txt", "r").readlines():
     moons.append([int(p.strip('yxz= ')) for p in moon.strip('<>\n').split(',')])
-vel=[[0,0,0],[0,0,0],[0,0,0],[0,0,0]]
 def energy():
     return sum([sum(map(abs,moons[i]))*sum(map(abs,vel[i])) for i in range(4)])
 z=0
 zy=0
+nullstate=[state(d) for d in range(3)]
 while zy<3:
     for d in range(3):
-        if zm[d]==0:
-            state=(moons[0][d],moons[1][d],moons[2][d],moons[3][d],vel[0][d],vel[1][d],vel[2][d],vel[3][d])
-            if state in states[d]:
+        if z>0 and zm[d]==0:
+            if state(d) == nullstate[d]:
                 zm[d]=z
                 zy+=1
                 print(d,z)
-            states[d].add(state)
-
     for d in range(3):
         for m1 in range(4):
             for m2 in range(m1+1,4):
